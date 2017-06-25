@@ -10,9 +10,14 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
+        private Collider _collider;
         public Player(Texture2D texture, Vector2 position) : base(texture, position)
         {
+            _collider = new Collider(texture.Bounds.Size);
         }
+
+
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
