@@ -27,6 +27,19 @@ namespace TraceMaker
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            GS.I._tileMap= new TileMap(new Texture2D[]{Content.Load<Texture2D>("tileWhite"),
+                                                       Content.Load<Texture2D>("tileBlack"),
+                                                       Content.Load<Texture2D>("tileBrown"),
+                                                       Content.Load<Texture2D>("tileBlue"),
+                                                       Content.Load<Texture2D>("tileGray"),
+                                                       Content.Load<Texture2D>("tileGreen"),
+                                                       Content.Load<Texture2D>("tileOrange"),
+                                                       Content.Load<Texture2D>("tilePink"),
+                                                       Content.Load<Texture2D>("tileYellow"),
+                                                       Content.Load<Texture2D>("tileRed")
+                                                       }, Content.Load<Texture2D>("bitmapCollision001"));
+            GS.I._player=new Player(Content.Load<Texture2D>("Blue1"), new Vector2(100,100));
+            GS.I._camera = new Camera(GraphicsDevice.Viewport);
 
             base.Initialize();
         }
