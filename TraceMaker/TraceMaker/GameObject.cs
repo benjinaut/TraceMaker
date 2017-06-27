@@ -13,7 +13,7 @@ namespace TraceMaker
         protected Texture2D _texture;
         protected Vector2 _position;
 
-        public GameObject(Texture2D texture, Vector2 position)
+        protected GameObject(Texture2D texture, Vector2 position)
         {
             _position = position;
             _texture = texture;

@@ -20,6 +20,7 @@ namespace TraceMaker
             _move = Vector2.Zero;
         }
 
+
         void KeyboardInput()
         {
             KeyboardState key = Keyboard.GetState();
@@ -67,7 +68,7 @@ namespace TraceMaker
             spriteBatch.Draw(_texture, _position, Color.White);
         }
 
-        public override void Update(GameTime gameTime)
+        public  override void Update(GameTime gameTime)
         {
             KeyboardInput();
         }
