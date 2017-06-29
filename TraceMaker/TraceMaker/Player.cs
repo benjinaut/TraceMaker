@@ -9,14 +9,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TraceMaker
 {
-    class Player // : GameObject
+    class Player : GameObject
     {
-        public Vector2 _position;
-        public Texture2D _texture;
+
+        private float gforce = 0.01f;
+
         private readonly Collider _collider;
         private Vector2 _move;
 
-        public Player(Texture2D texture, Vector2 position) //: base(texture, position)
+        public Player(Texture2D texture, Vector2 position) : base(texture, position)
         {
             
             _texture = texture;
@@ -52,6 +53,10 @@ namespace TraceMaker
             {
                 
             }
+
+            _move.Y += gforce;
+
+            if(_move.Length()>0)
             _move.Normalize();
 
             //collision block
@@ -68,12 +73,12 @@ namespace TraceMaker
         }
 
 
-        public /*override*/ void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, _position, Color.White);
         }
 
-        public  /*override*/ void Update(GameTime gameTime)
+        public  override void Update(GameTime gameTime)
         {
             KeyboardInput();
         }

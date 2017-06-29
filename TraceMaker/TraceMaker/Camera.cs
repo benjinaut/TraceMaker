@@ -19,8 +19,8 @@ namespace TraceMaker
         }
         public Matrix GetViewMatrix()
         {
-            // _position = GS.I._player.GetPosition();
-            _position = GS.I._player._position;
+            _position = GS.I._player.GetPosition();
+   
             return Matrix.CreateTranslation(new Vector3(-_position + _origin, 1));
 
         }
