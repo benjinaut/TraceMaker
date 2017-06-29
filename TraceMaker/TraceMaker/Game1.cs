@@ -31,8 +31,8 @@ namespace TraceMaker
                 Content.Load<Texture2D>("tilePink"),
                 Content.Load<Texture2D>("tileYellow"),
                 Content.Load<Texture2D>("tileRed")    },
-                Content.Load<Texture2D>("bitmapCollision001"));
-            GS.I._player=new Player(Content.Load<Texture2D>("blue1"), new Vector2(150, 150));
+                Content.Load<Texture2D>("bitmap001"));
+            GS.I._player= new Player(Content.Load<Texture2D>("blue1"), new Vector2(0, 0));
             GS.I._camera = new Camera(GraphicsDevice.Viewport);
 
             base.Initialize();
@@ -60,7 +60,7 @@ namespace TraceMaker
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Red);
 
             spriteBatch.Begin(transformMatrix: GS.I._camera.GetViewMatrix());
            
