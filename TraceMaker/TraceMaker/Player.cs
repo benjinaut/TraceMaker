@@ -11,15 +11,15 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
-
         private float gforce = 0.1f;
 
         private readonly Collider collider;
         private Vector2 move;
         private bool jmp;
 
-        public Player(Texture2D _texture, Vector2 _position) : base(_texture, _position)
+        public Player(Texture2D _texture, Vector2 Zero) : base(_texture, Zero)
         {
+            position = new Vector2(GS.I.tileMap.GetStartPoint().X, GS.I.tileMap.GetStartPoint().Y - texture.Height + GS.I.tileMap.GetSize().Y-0.5f );
             collider = new Collider(_texture.Bounds.Size);
             move = Vector2.Zero;
             jmp = true;
@@ -43,10 +43,11 @@ namespace TraceMaker
             {
                 move.X += 1;
             }
-
-
-            if(move.Length()>0)
-            move.Normalize();
+            if (!jmp && key.IsKeyDown(Keys.Space))
+            {
+                move.Y -= 5;
+                jmp = true;
+            }
 
             //collision block
             if ( collider.ColHor(move.X, position))
@@ -56,6 +57,7 @@ namespace TraceMaker
             if (collider.ColVer(move.Y, position))
             {
                 move.Y = 0;
+                jmp = false;
             }
 
             position += move;

@@ -1,2 +1,3 @@
 -startpoint tilemap player blue tile
--playermovement
+-playermovement, jump, walljump,
+-

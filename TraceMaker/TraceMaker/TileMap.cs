@@ -26,6 +26,11 @@ namespace TraceMaker
             return size;
         }
 
+        public Vector2 GetStartPoint()
+        {
+            return startpoint;
+        }
+
         public bool Walkable(Vector2 currentPosition)
         {
             return map[(int)(currentPosition.X / size.X), (int)(currentPosition.Y / size.Y)].Walkable();
