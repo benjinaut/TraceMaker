@@ -32,7 +32,7 @@ namespace TraceMaker
                 Content.Load<Texture2D>("tileYellow"),
                 Content.Load<Texture2D>("tileRed")    },
                 Content.Load<Texture2D>("bitmapTest001"));
-            GS.I.player= new Player(Content.Load<Texture2D>("blue1"), new Vector2(16,16));
+            GS.I.player= new Player(Content.Load<Texture2D>("traceMakerSprite-0001"), Vector2.Zero, new Point(50,50));
             GS.I.camera = new Camera(GraphicsDevice.Viewport);
 
             base.Initialize();

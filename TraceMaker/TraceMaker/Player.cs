@@ -14,17 +14,21 @@ namespace TraceMaker
         private float gforce = 0.1f;
 
         private readonly Collider collider;
+        private float moveLength = 3;
         private Vector2 move;
         private bool jmp;
+        private Animatrix animatrix;
 
-        public Player(Texture2D _texture, Vector2 Zero) : base(_texture, Zero)
+
+
+        public Player(Texture2D _texture, Vector2 _zero, Point _frameSize) : base(_texture, _zero)
         {
             position = new Vector2(GS.I.tileMap.GetStartPoint().X, GS.I.tileMap.GetStartPoint().Y - texture.Height + GS.I.tileMap.GetSize().Y-0.5f );
-            collider = new Collider(_texture.Bounds.Size);
+            collider = new Collider(_frameSize);
             move = Vector2.Zero;
             jmp = true;
+            animatrix=new Animatrix(_frameSize, new Point(_texture.Width / _frameSize.X, (_texture.Height / _frameSize.Y) - 1),100);
         }
-
 
         void KeyboardInput()
         {
@@ -37,11 +41,11 @@ namespace TraceMaker
             //key block
             if (key.IsKeyDown(Keys.A))
             {
-                move.X -= 1;
+                move.X -= moveLength;
             }
             if (key.IsKeyDown(Keys.D))
             {
-                move.X += 1;
+                move.X += moveLength;
             }
             if (!jmp && key.IsKeyDown(Keys.Space))
             {
@@ -63,15 +67,15 @@ namespace TraceMaker
             position += move;
         }
 
-
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(texture, position, animatrix.GetFrameRectangle() ,Color.White);
         }
 
         public  override void Update(GameTime gameTime)
         {
             KeyboardInput();
+            animatrix.Update(gameTime);
         }
     }
 }

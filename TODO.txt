@@ -1,3 +1,4 @@
--startpoint tilemap player blue tile
--playermovement, jump, walljump,
--
+-startpoint tilemap player blue tile, erweitern um checkpoints
+-playermovement, jump, walljump, slide, other stuff,
+-menu
+-save and load
