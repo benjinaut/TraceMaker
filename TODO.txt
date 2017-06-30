@@ -1,0 +1,2 @@
+-startpoint tilemap player blue tile
+-playermovement

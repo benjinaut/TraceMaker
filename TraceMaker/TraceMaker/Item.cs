@@ -10,15 +10,15 @@ namespace TraceMaker
 {
     class Item : GameObject
     {
-        private int _id;
-        public Item(Texture2D texture, Vector2 position, int id) : base(texture, position)
+        private int id;
+        public Item(Texture2D texture, Vector2 position, int _id) : base(texture, position)
         {
-            _id = id;
+            id = _id;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, Color.White);
+            spriteBatch.Draw(texture, position, Color.White);
         }
 
         public override void Update(GameTime gameTime)

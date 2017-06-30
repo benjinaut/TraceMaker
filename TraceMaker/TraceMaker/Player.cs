@@ -12,70 +12,59 @@ namespace TraceMaker
     class Player : GameObject
     {
 
-        private float gforce = 0.01f;
+        private float gforce = 0.1f;
 
-        private readonly Collider _collider;
-        private Vector2 _move;
+        private readonly Collider collider;
+        private Vector2 move;
+        private bool jmp;
 
-        public Player(Texture2D texture, Vector2 position) : base(texture, position)
+        public Player(Texture2D _texture, Vector2 _position) : base(_texture, _position)
         {
-            
-            _texture = texture;
-            _position = position;
-            _collider = new Collider(texture.Bounds.Size);
-            _move = Vector2.Zero;
+            collider = new Collider(_texture.Bounds.Size);
+            move = Vector2.Zero;
+            jmp = true;
         }
 
 
         void KeyboardInput()
         {
             KeyboardState key = Keyboard.GetState();
-            _move = Vector2.Zero;
-
-            //key block
-            if (key.IsKeyDown(Keys.W))
+            move.X = 0;
+            if (move.Y < GS.I.tileMap.GetSize().Y)
             {
-                _move.Y -= 1;
+                move.Y += gforce;
             }
+            //key block
             if (key.IsKeyDown(Keys.A))
             {
-                _move.X -= 1;
-            }
-            if (key.IsKeyDown(Keys.S))
-            {
-                _move.Y += 1;
+                move.X -= 1;
             }
             if (key.IsKeyDown(Keys.D))
             {
-                _move.X += 1;
-            }
-            if (key.IsKeyDown(Keys.E))
-            {
-                
+                move.X += 1;
             }
 
-            _move.Y += gforce;
 
-            if(_move.Length()>0)
-            _move.Normalize();
+            if(move.Length()>0)
+            move.Normalize();
 
             //collision block
-            if ( _collider.ColHor(_move.X, _position))
+            if ( collider.ColHor(move.X, position))
             {
-                _move.X = 0;
+                move.X = 0;
             }
-            if (_collider.ColVer(_move.Y, _position))
+            if (collider.ColVer(move.Y, position))
             {
-                _move.Y = 0;
+                move.Y = 0;
             }
 
-            _position += _move;
+            position += move;
         }
 
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, Color.White);
+            spriteBatch.Draw(texture, position, Color.White);
         }
 
         public  override void Update(GameTime gameTime)

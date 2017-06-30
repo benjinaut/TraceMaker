@@ -9,9 +9,9 @@ namespace TraceMaker
     class GS
     {
         public static GS i;
-        public Player _player;
-        public TileMap _tileMap;
-        public Camera _camera;
+        public Player player;
+        public TileMap tileMap;
+        public Camera camera;
 
 
         public static GS I

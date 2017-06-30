@@ -10,23 +10,23 @@ namespace TraceMaker
 {
     abstract class GameObject
     {
-        protected Texture2D _texture;
-        protected Vector2 _position;
+        protected Texture2D texture;
+        protected Vector2 position;
 
-        protected GameObject(Texture2D texture, Vector2 position)
+        protected GameObject(Texture2D _texture, Vector2 _position)
         {
-            _position = position;
-            _texture = texture;
+            position = _position;
+            texture = _texture;
         }
 
         public Vector2 GetPosition()
         {
-            return _position;
+            return position;
         }
 
         public Texture2D GetTexture()
         {
-            return _texture;
+            return texture;
         }
 
         public abstract void Update(GameTime gameTime);

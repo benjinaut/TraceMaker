@@ -20,7 +20,7 @@ namespace TraceMaker
 
         protected override void Initialize()
         {
-            GS.I._tileMap= new TileMap(new Texture2D[]{
+            GS.I.tileMap= new TileMap(new Texture2D[]{
                 Content.Load<Texture2D>("tileWhite"),
                 Content.Load<Texture2D>("tileBlack"),
                 Content.Load<Texture2D>("tileBrown"),
@@ -31,9 +31,9 @@ namespace TraceMaker
                 Content.Load<Texture2D>("tilePink"),
                 Content.Load<Texture2D>("tileYellow"),
                 Content.Load<Texture2D>("tileRed")    },
-                Content.Load<Texture2D>("bitmap001"));
-            GS.I._player= new Player(Content.Load<Texture2D>("blue1"), new Vector2(16,16));
-            GS.I._camera = new Camera(GraphicsDevice.Viewport);
+                Content.Load<Texture2D>("bitmapTest001"));
+            GS.I.player= new Player(Content.Load<Texture2D>("blue1"), new Vector2(16,16));
+            GS.I.camera = new Camera(GraphicsDevice.Viewport);
 
             base.Initialize();
         }
@@ -54,7 +54,7 @@ namespace TraceMaker
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            GS.I._player.Update(gameTime);
+            GS.I.player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -62,10 +62,10 @@ namespace TraceMaker
         {
             GraphicsDevice.Clear(Color.Red);
 
-            spriteBatch.Begin(transformMatrix: GS.I._camera.GetViewMatrix());
+            spriteBatch.Begin(transformMatrix: GS.I.camera.GetViewMatrix());
            
-            GS.I._tileMap.Draw(spriteBatch);
-            GS.I._player.Draw(spriteBatch);
+            GS.I.tileMap.Draw(spriteBatch);
+            GS.I.player.Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);

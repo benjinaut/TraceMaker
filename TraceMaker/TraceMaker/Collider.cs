@@ -11,11 +11,11 @@ namespace TraceMaker
 {
     class Collider
     {
-        private Point _size;
+        private Point size;
 
-        public Collider(Point size)
+        public Collider(Point _size)
         {
-            _size = size;
+            size = _size;
         }
 
         public bool ColObj()
@@ -28,25 +28,25 @@ namespace TraceMaker
         {
             if (moveX < 0) //left
             {
-                for (int i = 0; i * GS.I._tileMap.GetSize().Y < _size.Y; i++)
+                for (int i = 0; i * GS.I.tileMap.GetSize().Y < size.Y; i++)
                 {
-                    if (!GS.I._tileMap.Walkable(new Vector2(position.X + moveX, position.Y + i * GS.I._tileMap.GetSize().Y)))
+                    if (!GS.I.tileMap.Walkable(new Vector2(position.X + moveX, position.Y + i * GS.I.tileMap.GetSize().Y)))
                     {
                         return true;
                     }
                 }
-                return !GS.I._tileMap.Walkable(new Vector2(position.X + moveX, position.Y + _size.Y));
+                return !GS.I.tileMap.Walkable(new Vector2(position.X + moveX, position.Y + size.Y));
             }
             if (moveX > 0) //right
             {
-                for (int i = 0; i * GS.I._tileMap.GetSize().Y < _size.Y; i++)
+                for (int i = 0; i * GS.I.tileMap.GetSize().Y < size.Y; i++)
                 {
-                    if (!GS.I._tileMap.Walkable(new Vector2(position.X + moveX + _size.X, position.Y + i * GS.I._tileMap.GetSize().Y)))
+                    if (!GS.I.tileMap.Walkable(new Vector2(position.X + moveX + size.X, position.Y + i * GS.I.tileMap.GetSize().Y)))
                     {
                         return true;
                     }
                 }
-                return !GS.I._tileMap.Walkable(new Vector2(position.X + moveX + _size.X, position.Y + _size.Y));
+                return !GS.I.tileMap.Walkable(new Vector2(position.X + moveX + size.X, position.Y + size.Y));
             }
             return false; //nope nope nope
         }
@@ -55,25 +55,25 @@ namespace TraceMaker
         {
             if (moveY < 0) //up
             {
-                for (int i = 0; i * GS.I._tileMap.GetSize().X < _size.X; i++)
+                for (int i = 0; i * GS.I.tileMap.GetSize().X < size.X; i++)
                 {
-                    if (!GS.I._tileMap.Walkable(new Vector2(position.X + i * GS.I._tileMap.GetSize().X, position.Y + moveY)))
+                    if (!GS.I.tileMap.Walkable(new Vector2(position.X + i * GS.I.tileMap.GetSize().X, position.Y + moveY)))
                     {
                         return true;
                     }
                 }
-                return !GS.I._tileMap.Walkable(new Vector2(position.X + _size.X, position.Y + moveY));
+                return !GS.I.tileMap.Walkable(new Vector2(position.X + size.X, position.Y + moveY));
             }
             if (moveY > 0) //down
             {
-                for (int i = 0; i * GS.I._tileMap.GetSize().X < _size.X; i++)
+                for (int i = 0; i * GS.I.tileMap.GetSize().X < size.X; i++)
                 {
-                    if (!GS.I._tileMap.Walkable(new Vector2(position.X + i * GS.I._tileMap.GetSize().X, position.Y + moveY + _size.Y )))
+                    if (!GS.I.tileMap.Walkable(new Vector2(position.X + i * GS.I.tileMap.GetSize().X, position.Y + moveY + size.Y )))
                     {
                         return true;
                     }
                 }
-                return !GS.I._tileMap.Walkable(new Vector2(position.X + _size.X, position.Y + moveY + _size.Y));
+                return !GS.I.tileMap.Walkable(new Vector2(position.X + size.X, position.Y + moveY + size.Y));
             }
             return false; //nope nope nope
         }
