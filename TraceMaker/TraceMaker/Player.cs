@@ -11,7 +11,7 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
-
+        private AnimationState animationState;
         private const float gforce = 0.1f;
         private readonly Collider collider;
         private const float moveLength = 3;
@@ -26,7 +26,7 @@ namespace TraceMaker
             move = Vector2.Zero;
             jmp = true;
 
-            animatrix =new Animatrix(_frameSize, new Point(_texture.Width / _frameSize.X, (_texture.Height / _frameSize.Y) - 1),100);
+            //animatrix =new Animatrix(_frameSize, new Point(_texture.Width / _frameSize.X, (_texture.Height / _frameSize.Y) - 1),100);
         }
 
         void KeyboardInput()
@@ -53,22 +53,29 @@ namespace TraceMaker
             }
 
             //collision block
-            if ( collider.ColHor(move.X, position))
+            if ( collider.Horizontal(move.X, position))
             {
                 move.X = 0;
+                animationState = AnimationState.IDLE;
             }
-            if (collider.ColVer(move.Y, position))
+            if (collider.Vertical(move.Y, position))
             {
                 move.Y = 0;
                 jmp = false;
             }
+
+            if (move.X > 0)
+                animationState = AnimationState.RUN;
+ 
+            if (jmp)
+                animationState = AnimationState.JUMP;
 
             position += move;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, animatrix.GetFrameRectangle() ,Color.White);
+            animatrix.Draw(spriteBatch, position);
         }
 
         public  override void Update(GameTime gameTime)

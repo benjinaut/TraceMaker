@@ -13,24 +13,35 @@ namespace TraceMaker
     {
         IDLE, RUN, JUMP 
     }
+    
 
     class Animatrix
     {
         //int mps kann in animatrix
-
-        private Animation[] animations;
+        private Animation animation;
+        private Texture2D[] spriteSheet;
         private AnimationState animationState;
+        private Dictionary<AnimationState, Texture2D> spriteDictionary;
 
         public Animatrix(Point _frameSize, int _mpf, Texture2D[] _spriteSheets)
         {
-            animations=new Animation[_spriteSheets.Length];
-            for (int i = 0; i< _spriteSheets.Length; i++)
-            {
-                animations[i]=new Animation(_frameSize, _spriteSheets[i].Bounds.Size, _mpf);        
-            }
-
+            spriteSheet = _spriteSheets;
+            animation = new Animation(_frameSize, (_spriteSheets[0].Bounds.Size.X/_frameSize.X), _mpf, AnimationState.IDLE);
+            animationState = AnimationState.IDLE;
+            spriteDictionary.Add(AnimationState.IDLE, _spriteSheets[0]);
+            spriteDictionary.Add(AnimationState.RUN, _spriteSheets[1]);
+            spriteDictionary.Add(AnimationState.JUMP, _spriteSheets[2]);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        {
+            spriteBatch.Draw(spriteDictionary[animationState], position, animation.GetFrameRectangle(), Color.White);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            animation.Update(gameTime, animationState, spriteDictionary[animationState].Width);
+        }
 
     }
 }

@@ -24,7 +24,7 @@ namespace TraceMaker
         }
 
 
-        public bool ColHor(float moveX, Vector2 position)
+        public bool Horizontal(float moveX, Vector2 position)
         {
             if (moveX < 0) //left
             {
@@ -51,7 +51,7 @@ namespace TraceMaker
             return false; //nope nope nope
         }
 
-        public bool ColVer(float moveY, Vector2 position)
+        public bool Vertical(float moveY, Vector2 position)
         {
             if (moveY < 0) //up
             {

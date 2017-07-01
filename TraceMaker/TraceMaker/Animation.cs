@@ -10,15 +10,17 @@ namespace TraceMaker
 {
     class Animation
     {
-        private Point currentFrame;
+        private AnimationState animationState; 
+        private int currentFrame;
         private readonly Point frameSize;
-        private Point sheetSize;
+        private int sheetSize;
         private int tslf = 0; //time since last frame
         private int mpf; //milliseconds per frame 
 
-        public Animation(Point _frameSize, Point _sheetSize, int _mpf)
+        public Animation(Point _frameSize, int _sheetSize, int _mpf, AnimationState _animationState)
         {
-            currentFrame = Point.Zero;
+            animationState = _animationState;
+            currentFrame = 0;
             frameSize = _frameSize;
             sheetSize = _sheetSize;
             mpf = _mpf;
@@ -26,19 +28,28 @@ namespace TraceMaker
 
         public Rectangle GetFrameRectangle()
         {
-            return new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y);
+            return new Rectangle(currentFrame * frameSize.X, currentFrame * frameSize.Y, frameSize.X, frameSize.Y);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, AnimationState _animationState, int _sheetSizeXFrameSize)
         {
-            tslf += gameTime.ElapsedGameTime.Milliseconds;
-            if (tslf > mpf)
+            if (animationState != _animationState)
             {
-                tslf -= mpf;
-                currentFrame.X++;
-                if (currentFrame.X >= sheetSize.X)
+                animationState = _animationState;
+                currentFrame = 0;
+                sheetSize = _sheetSizeXFrameSize/frameSize.X;
+            }
+            else
+            {
+                tslf += gameTime.ElapsedGameTime.Milliseconds;
+                if (tslf > mpf)
                 {
-                    currentFrame.X = 0;
+                    tslf -= mpf;
+                    currentFrame++;
+                    if (currentFrame >= sheetSize)
+                    {
+                        currentFrame = 0;
+                    }
                 }
             }
         }

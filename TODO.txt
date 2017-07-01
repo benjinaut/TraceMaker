@@ -1,6 +1,6 @@
 -startpoint tilemap player blue tile, 
 -erweitern um checkpoints
--playermovement, jump, walljump, slide, other stuff,´
+-playermovement, jump, walljump, slide, other stuff, drop. doublejump
 -animatrix.cs, animation.cs
 -menu
 -save and load
