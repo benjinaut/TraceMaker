@@ -11,15 +11,12 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
-        private float gforce = 0.1f;
-
+        private const float gforce = 0.1f;
         private readonly Collider collider;
-        private float moveLength = 3;
+        private const float moveLength = 3;
         private Vector2 move;
         private bool jmp;
         private Animatrix animatrix;
-
-
 
         public Player(Texture2D _texture, Vector2 _zero, Point _frameSize) : base(_texture, _zero)
         {

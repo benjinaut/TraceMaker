@@ -11,6 +11,8 @@ namespace TraceMaker
 {
     class Animatrix
     {
+        enum AnimationState {Idl, Run, Jmp, Sld }
+
         private Point currentFrame;
         private readonly Point frameSize;
         private Point sheetSize;

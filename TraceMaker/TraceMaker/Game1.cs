@@ -4,9 +4,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TraceMaker
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -60,7 +57,7 @@ namespace TraceMaker
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Blue);
 
             spriteBatch.Begin(transformMatrix: GS.I.camera.GetViewMatrix());
            
