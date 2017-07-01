@@ -1,4 +1,8 @@
--startpoint tilemap player blue tile, erweitern um checkpoints
--playermovement, jump, walljump, slide, other stuff, animatrix.cs, animation.cs
+-startpoint tilemap player blue tile, 
+-erweitern um checkpoints
+-playermovement, jump, walljump, slide, other stuff,´
+-animatrix.cs, animation.cs
 -menu
 -save and load
+-story
+-

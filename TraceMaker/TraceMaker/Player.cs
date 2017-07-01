@@ -11,6 +11,7 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
+
         private const float gforce = 0.1f;
         private readonly Collider collider;
         private const float moveLength = 3;
@@ -24,7 +25,8 @@ namespace TraceMaker
             collider = new Collider(_frameSize);
             move = Vector2.Zero;
             jmp = true;
-            animatrix=new Animatrix(_frameSize, new Point(_texture.Width / _frameSize.X, (_texture.Height / _frameSize.Y) - 1),100);
+
+            animatrix =new Animatrix(_frameSize, new Point(_texture.Width / _frameSize.X, (_texture.Height / _frameSize.Y) - 1),100);
         }
 
         void KeyboardInput()

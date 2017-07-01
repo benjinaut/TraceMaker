@@ -9,41 +9,28 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TraceMaker
 {
+    enum AnimationState
+    {
+        IDLE, RUN, JUMP 
+    }
+
     class Animatrix
     {
-        enum AnimationState {Idl, Run, Jmp, Sld }
+        //int mps kann in animatrix
 
-        private Point currentFrame;
-        private readonly Point frameSize;
-        private Point sheetSize;
-        private int tslf = 0; //time since last frame
-        private int mpf; //milliseconds per frame
+        private Animation[] animations;
+        private AnimationState animationState;
 
-        public Animatrix(Point _frameSize, Point _sheetSize, int _mpf)
+        public Animatrix(Point _frameSize, int _mpf, Texture2D[] _spriteSheets)
         {
-            currentFrame = Point.Zero;
-            frameSize = _frameSize;
-            sheetSize = _sheetSize;
-            mpf = _mpf;
-        }
-
-        public Rectangle GetFrameRectangle()
-        {
-            return new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y);
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            tslf += gameTime.ElapsedGameTime.Milliseconds;
-            if (tslf > mpf)
+            animations=new Animation[_spriteSheets.Length];
+            for (int i = 0; i< _spriteSheets.Length; i++)
             {
-                tslf -= mpf;
-                currentFrame.X++;
-                if (currentFrame.X >= sheetSize.X)
-                {
-                    currentFrame.X = 0;
-                }
+                animations[i]=new Animation(_frameSize, _spriteSheets[i].Bounds.Size, _mpf);        
             }
+
         }
+
+
     }
 }
