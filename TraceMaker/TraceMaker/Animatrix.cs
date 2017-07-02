@@ -28,6 +28,7 @@ namespace TraceMaker
             spriteSheet = _spriteSheets;
             animation = new Animation(_frameSize, (_spriteSheets[0].Bounds.Size.X/_frameSize.X), _mpf, AnimationState.IDLE);
             animationState = AnimationState.IDLE;
+            spriteDictionary=new Dictionary<AnimationState, Texture2D>();
             spriteDictionary.Add(AnimationState.IDLE, _spriteSheets[0]);
             spriteDictionary.Add(AnimationState.RUN, _spriteSheets[1]);
             spriteDictionary.Add(AnimationState.JUMP, _spriteSheets[2]);
@@ -38,8 +39,9 @@ namespace TraceMaker
             spriteBatch.Draw(spriteDictionary[animationState], position, animation.GetFrameRectangle(), Color.White);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, AnimationState _animationState)
         {
+            animationState = _animationState;
             animation.Update(gameTime, animationState, spriteDictionary[animationState].Width);
         }
 
