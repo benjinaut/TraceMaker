@@ -10,7 +10,8 @@ namespace TraceMaker
 {
     class Animation
     {
-        private AnimationState animationState; 
+        private AnimationState animationState;
+        private Directions direction;
         private int currentFrame;
         private readonly Point frameSize;
         private int sheetSize;
@@ -28,7 +29,7 @@ namespace TraceMaker
 
         public Rectangle GetFrameRectangle()
         {
-            return new Rectangle(currentFrame * frameSize.X, currentFrame * frameSize.Y, frameSize.X, frameSize.Y);
+            return new Rectangle(currentFrame * frameSize.X, 0, frameSize.X, frameSize.Y);
         }
 
         public void Update(GameTime gameTime, AnimationState _animationState, int _sheetSizeXFrameSize)

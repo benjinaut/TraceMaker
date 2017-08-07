@@ -11,7 +11,7 @@ namespace TraceMaker
 {
     class Player : GameObject
     {
-        private AnimationState animationState;
+        
         private const float gforce = 0.1f;
         private readonly Collider collider;
         private const float moveLength = 3;
@@ -47,7 +47,7 @@ namespace TraceMaker
             }
             if (!jmp && key.IsKeyDown(Keys.Space))
             {
-                move.Y -= 5;
+                move.Y -= 3;
                 jmp = true;
             }
 
@@ -61,14 +61,14 @@ namespace TraceMaker
             {
                 move.Y = 0;
                 jmp = false;
-                animationState = AnimationState.IDLE;
+                animatrix.SetAnimationState(AnimationState.IDLE);
             }
 
             if (move.X != 0)
-                animationState = AnimationState.RUN;
- 
+                animatrix.SetAnimationState(AnimationState.RUN);
+
             if (jmp)
-                animationState = AnimationState.JUMP;
+                animatrix.SetAnimationState(AnimationState.JUMP);
 
             position += move;
         }
@@ -81,7 +81,7 @@ namespace TraceMaker
         public  override void Update(GameTime gameTime)
         {
             KeyboardInput();
-            animatrix.Update(gameTime, animationState);
+            animatrix.Update(gameTime);
         }
     }
 }

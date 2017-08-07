@@ -4,6 +4,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TraceMaker
 {
+    enum AnimationState
+    {
+        IDLE, RUN, JUMP
+    }
+    enum Directions
+    {
+        RIGHT, LEFT, UP, DOWN, UPRIGHT, DOWNRIGHT, UPLEFT, DOWNLEFT
+    }
+ 
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;

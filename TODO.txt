@@ -1,8 +1,14 @@
 -startpoint tilemap player blue tile, 
 -erweitern um checkpoints
 -playermovement, jump, walljump, slide, other stuff, drop. doublejump
+-jumpandrun, rougelike
 -animatrix.cs, animation.cs
 -menu
 -save and load
 -story
+-dyingCone
+
+- souls like
+- rogue like
+- J&R 
 -
