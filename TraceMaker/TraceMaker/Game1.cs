@@ -10,7 +10,7 @@ namespace TraceMaker
     }
     enum Directions
     {
-        RIGHT, LEFT, UP, DOWN, UPRIGHT, DOWNRIGHT, UPLEFT, DOWNLEFT
+        RIGHT, LEFT
     }
  
     public class Game1 : Game
@@ -72,7 +72,7 @@ namespace TraceMaker
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Blue);
+            GraphicsDevice.Clear(Color.Green);
 
             spriteBatch.Begin(transformMatrix: GS.I.camera.GetViewMatrix());
            

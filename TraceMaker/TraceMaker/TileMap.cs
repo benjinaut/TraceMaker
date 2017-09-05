@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace TraceMaker
 {
@@ -12,7 +13,7 @@ namespace TraceMaker
     {
         private Tile[,] map;
         private Point size;
-        private Vector2 startpoint;
+        private ArrayList checkPoint = new ArrayList();
 
         public TileMap(Texture2D[] textures, Texture2D bitMap)
         {
@@ -25,10 +26,12 @@ namespace TraceMaker
         {
             return size;
         }
-
+        //TODO hier
         public Vector2 GetStartPoint()
         {
-            return startpoint;
+            if(checkPoint.Count>0)
+                return checkPoint.
+            
         }
 
         public bool Walkable(Vector2 currentPosition)
@@ -57,6 +60,7 @@ namespace TraceMaker
         {
             Color[] colores = new Color[bitMap.Width * bitMap.Height];
             bitMap.GetData(colores);
+            int stpCounter = 0;
 
             for (int y = 0; y < map.GetLength(1); y++)
             {
@@ -77,7 +81,7 @@ namespace TraceMaker
                     else if (colores[y * map.GetLength(0) + x] == Color.Blue)
                     {   //Blue Startpoint 
                         map[x, y] = new Tile(textures[3], new Vector2(x * size.X, y * size.Y), 0);
-                        startpoint = new Vector2(x * size.X, y * size.Y);
+                        checkPoint.Add(new Vector2(x * size.X, y * size.Y));
                     }
                     else if (colores[y * map.GetLength(0) + x] == Color.Gray)
                     {   //Gray

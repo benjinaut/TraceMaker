@@ -21,7 +21,7 @@ namespace TraceMaker
 
         public Player(Texture2D[] _textures, Vector2 _zero, Point _frameSize) : base( null, _zero)
         {
-            position = new Vector2(GS.I.tileMap.GetStartPoint().X, GS.I.tileMap.GetStartPoint().Y - _frameSize.Y + GS.I.tileMap.GetSize().Y-0.5f );
+            position = new Vector2(GS.I.tileMap.GetStartPoint(0).X, GS.I.tileMap.GetStartPoint(0).Y - _frameSize.Y + GS.I.tileMap.GetSize().Y-0.5f );
             collider = new Collider(_frameSize);
             move = Vector2.Zero;
             jmp = true;
@@ -40,10 +40,12 @@ namespace TraceMaker
             if (key.IsKeyDown(Keys.A))
             {
                 move.X -= moveLength;
+                animatrix.SetDirection(Directions.LEFT);
             }
             if (key.IsKeyDown(Keys.D))
             {
                 move.X += moveLength;
+                animatrix.SetDirection(Directions.RIGHT);
             }
             if (!jmp && key.IsKeyDown(Keys.Space))
             {

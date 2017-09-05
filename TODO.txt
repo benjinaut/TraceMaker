@@ -1,14 +1,47 @@
--startpoint tilemap player blue tile, 
--erweitern um checkpoints
--playermovement, jump, walljump, slide, other stuff, drop. doublejump
--jumpandrun, rougelike
--animatrix.cs, animation.cs
--menu
--save and load
--story
--dyingCone
+TraceMaker todo
 
+programming stuff
+-erweitern um checkpoints
+-playermovement, walljump, slide, other stuff, 
+	drop, doublejump, climb, parkour stuff //sonic, super meatboy, mario,
+-jumpandrun, rougelike, 
+
+-menu, options, 
+-save and load
+-enemys //downwell
+-health, heal, //zelda, mario,
+
+Animation
+-fighting animation
+-running animation
+-enemys
+-items
+
+story
+1-GreenHead
+
+
+
+
+
+
+2-dyingCone
 - souls like
 - rogue like
 - J&R 
 -
+
+
+
+Done
+-startpoint tilemap player blue tile, 
+-jump,
+-spriteEffects.fliphorisontal
+-animatrix.cs, animation.cs, 
+
+
+
+
+
+
+
