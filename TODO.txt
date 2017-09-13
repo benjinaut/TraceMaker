@@ -1,8 +1,11 @@
 TraceMaker todo
 
+delegates oder so //für Buttons
+
+
 programming stuff
 -erweitern um checkpoints
--playermovement, walljump, slide, other stuff, 
+-playermovement, walljump, slide, roll, other stuff, 
 	drop, doublejump, climb, parkour stuff //sonic, super meatboy, mario,
 -jumpandrun, rougelike, 
 
@@ -19,10 +22,6 @@ Animation
 
 story
 1-GreenHead
-
-
-
-
 
 
 2-dyingCone

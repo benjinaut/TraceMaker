@@ -12,7 +12,7 @@ namespace TraceMaker
     {
         RIGHT, LEFT
     }
- 
+
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -37,7 +37,7 @@ namespace TraceMaker
                 Content.Load<Texture2D>("tilePink"),
                 Content.Load<Texture2D>("tileYellow"),
                 Content.Load<Texture2D>("tileRed")    },
-                Content.Load<Texture2D>("bitmapTest001"));
+                Content.Load<Texture2D>("Unbenannt"));
             GS.I.player= new Player(new Texture2D[]
                 {
                     Content.Load<Texture2D>("traceMakerSprite-0001"),

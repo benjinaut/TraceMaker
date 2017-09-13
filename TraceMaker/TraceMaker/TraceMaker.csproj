@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{21DE4549-99B4-41B7-BCB4-19645061DCAC}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TraceMaker</RootNamespace>
     <AssemblyName>TraceMaker</AssemblyName>
@@ -40,17 +40,26 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Animatrix.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="CM.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Game2.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="IGameState.cs" />
     <Compile Include="GS.cs" />
+    <Compile Include="InGameState.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemMap.cs" />
+    <Compile Include="MainMenuState.cs" />
     <Compile Include="Maps.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

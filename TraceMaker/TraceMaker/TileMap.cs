@@ -13,12 +13,15 @@ namespace TraceMaker
     {
         private Tile[,] map;
         private Point size;
-        private ArrayList checkPoint = new ArrayList();
+        private List<Vector2> checkPoints;
+        //private Vector2 startPoint;
 
         public TileMap(Texture2D[] textures, Texture2D bitMap)
         {
+
             map =new Tile[bitMap.Width,bitMap.Height];
             size = new Point(textures[0].Width, textures[0].Height);
+            checkPoints = new List<Vector2>();
             BuildMap(textures,bitMap);
         }
 
@@ -26,12 +29,19 @@ namespace TraceMaker
         {
             return size;
         }
-        //TODO hier
+      
         public Vector2 GetStartPoint()
         {
-            if(checkPoint.Count>0)
-                return checkPoint.
-            
+            if (checkPoints.Count > 0)
+                return checkPoints.ElementAt(0);
+            return Vector2.Zero;
+        }
+
+        public Vector2 GetCheckPoints(int n)
+        {
+            if (checkPoints.Count>n)
+                return checkPoints.ElementAt(n);
+            return Vector2.Zero;
         }
 
         public bool Walkable(Vector2 currentPosition)
@@ -81,7 +91,8 @@ namespace TraceMaker
                     else if (colores[y * map.GetLength(0) + x] == Color.Blue)
                     {   //Blue Startpoint 
                         map[x, y] = new Tile(textures[3], new Vector2(x * size.X, y * size.Y), 0);
-                        checkPoint.Add(new Vector2(x * size.X, y * size.Y));
+                        checkPoints.Add(new Vector2(x * size.X, y * size.Y));
+                       
                     }
                     else if (colores[y * map.GetLength(0) + x] == Color.Gray)
                     {   //Gray

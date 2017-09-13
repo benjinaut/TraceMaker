@@ -1,3 +1,4 @@
 -30.06. 22:30 first animation done
 -01.07. 21:37 jump animation done
 -18.08. 18:28 right left flip done
+-05.09. 22:52 menu and ingame states
