@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TraceMaker
 {
-    enum AnimationState
+    enum EAnimationState
     {
         IDLE, RUN, JUMP
     }
@@ -26,6 +26,7 @@ namespace TraceMaker
 
         protected override void Initialize()
         {
+            
             GS.I.tileMap= new TileMap(new Texture2D[]{
                 Content.Load<Texture2D>("tileWhite"),
                 Content.Load<Texture2D>("tileBlack"),
@@ -37,15 +38,25 @@ namespace TraceMaker
                 Content.Load<Texture2D>("tilePink"),
                 Content.Load<Texture2D>("tileYellow"),
                 Content.Load<Texture2D>("tileRed")    },
-                Content.Load<Texture2D>("Unbenannt"));
-            GS.I.player= new Player(new Texture2D[]
-                {
+                Content.Load<Texture2D>("pGTestmap"));
+
+
+
+            if (GS.I.tileMap.GetStartPoint()!=Vector2.Zero) {
+                GS.I.player = new Player(new Texture2D[]
+                    {
                     Content.Load<Texture2D>("traceMakerSprite-0001"),
                     Content.Load<Texture2D>("traceMakerSprite-0002"),
                     Content.Load<Texture2D>("traceMakerSprite-0003")
-                }
-                , Vector2.Zero, new Point(50,50));
-            GS.I.camera = new Camera(GraphicsDevice.Viewport);
+                    }
+                    , Vector2.Zero, new Point(50, 50));
+                GS.I.camera = new Camera(GraphicsDevice.Viewport, false);
+            }
+            else
+            {
+                GS.I.ghost = new Ghost(Content.Load<Texture2D>("GhostSprite"), Vector2.Zero, new Point(33, 33));
+                GS.I.camera = new Camera(GraphicsDevice.Viewport, true);
+            }
 
             base.Initialize();
         }
@@ -59,6 +70,7 @@ namespace TraceMaker
         protected override void UnloadContent()
         {
 
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -66,18 +78,21 @@ namespace TraceMaker
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            GS.I.player.Update(gameTime);
+            //GS.I.player.Update(gameTime);
+            GS.I.ghost.Update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Green);
+            GraphicsDevice.Clear(Color.Blue);
 
             spriteBatch.Begin(transformMatrix: GS.I.camera.GetViewMatrix());
            
             GS.I.tileMap.Draw(spriteBatch);
-            GS.I.player.Draw(spriteBatch);
+
+            GS.I.ghost.Draw(spriteBatch);
+            //GS.I.player.Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);

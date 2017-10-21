@@ -63,21 +63,22 @@ namespace TraceMaker
             {
                 move.Y = 0;
                 jmp = false;
-                animatrix.SetAnimationState(AnimationState.IDLE);
+                animatrix.SetAnimationState(EAnimationState.IDLE);
             }
 
             if (move.X != 0)
-                animatrix.SetAnimationState(AnimationState.RUN);
+                animatrix.SetAnimationState(EAnimationState.RUN);
 
             if (jmp)
-                animatrix.SetAnimationState(AnimationState.JUMP);
+                animatrix.SetAnimationState(EAnimationState.JUMP);
 
             position += move;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch _spriteBatch)
         {
-            animatrix.Draw(spriteBatch, position);
+
+            animatrix.Draw(_spriteBatch, position);
         }
 
         public  override void Update(GameTime gameTime)

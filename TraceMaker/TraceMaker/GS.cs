@@ -10,6 +10,7 @@ namespace TraceMaker
     {
         public static GS i;
         public Player player;
+        public Ghost ghost;
         public TileMap tileMap;
         public Camera camera;
 

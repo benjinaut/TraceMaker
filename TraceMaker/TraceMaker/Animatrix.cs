@@ -11,27 +11,32 @@ namespace TraceMaker
 {
     class Animatrix
     {
-        public Animation animation;
+        public Animation1 animation;
         private Texture2D[] spriteSheet;
-        private AnimationState animationState;
+        private EAnimationState animationState;
         private Directions direction;
-        private Dictionary<AnimationState, Texture2D> spriteDictionary;
+        private Dictionary<EAnimationState, Texture2D> spriteDictionary;
+        private Color color;
 
         public Animatrix(Point _frameSize, int _mpf, Texture2D[] _spriteSheets)
         {
             spriteSheet = _spriteSheets;
-            animation = new Animation(_frameSize, (_spriteSheets[0].Bounds.Size.X/_frameSize.X), _mpf, AnimationState.IDLE, Directions.RIGHT);
-            animationState=AnimationState.IDLE;
+            animation = new Animation1(_frameSize, (_spriteSheets[0].Bounds.Size.X/_frameSize.X), _mpf, EAnimationState.IDLE, Directions.RIGHT);
+            animationState=EAnimationState.IDLE;
             direction = Directions.RIGHT;
-            spriteDictionary =new Dictionary<AnimationState, Texture2D>();
-            spriteDictionary.Add(AnimationState.IDLE, _spriteSheets[0]);
-            spriteDictionary.Add(AnimationState.RUN, _spriteSheets[1]);
-            spriteDictionary.Add(AnimationState.JUMP, _spriteSheets[2]);
+            spriteDictionary =new Dictionary<EAnimationState, Texture2D>();
+            spriteDictionary.Add(EAnimationState.IDLE, _spriteSheets[0]);
+            if (_spriteSheets.Length > 1)
+            {
+                spriteDictionary.Add(EAnimationState.RUN, _spriteSheets[1]);
+                spriteDictionary.Add(EAnimationState.JUMP, _spriteSheets[2]);
+            }
+            color = Color.White;
 
         }
 
 
-        public void SetAnimationState(AnimationState _animationState)
+        public void SetAnimationState(EAnimationState _animationState)
         {
             animationState = _animationState;
         }
@@ -39,13 +44,17 @@ namespace TraceMaker
         {
             direction = _direction;
         }
+        public void SetColor(Color _color)
+        {
+            color = _color;
+        }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             if(direction==Directions.LEFT)
-                spriteBatch.Draw(spriteDictionary[animationState], position, null, animation.GetFrameRectangle(), Vector2.Zero, 0, null/**/, null, SpriteEffects.FlipHorizontally, 0);
+                spriteBatch.Draw(spriteDictionary[animationState], position, null , animation.GetFrameRectangle(), Vector2.Zero, 0, null, color, SpriteEffects.FlipHorizontally, 0);
             else
-                spriteBatch.Draw(spriteDictionary[animationState], position, null, animation.GetFrameRectangle(), Vector2.Zero, 0, null, null, SpriteEffects.None, 0);
+                spriteBatch.Draw(spriteDictionary[animationState], position, null, animation.GetFrameRectangle(), Vector2.Zero, 0, null, color, SpriteEffects.None, 0);
         }
 
         public void Update(GameTime gameTime)
